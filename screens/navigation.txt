@@ -1,0 +1,7 @@
+// push as a method with an object to tbe passed is also a way to navigate to another screen. It's importance is that it helps you navigate to a component(screen) you're into already while "navigate" is limited only to other screens outside the one you're currently into 
+
+// goBack as a method bundled with the navigation props is used for navigating backwards same is with pop but pop works only when you're using stackNavigator
+
+// replace as a method out of navigation props also navigates to the assigned component inside it's method call but it doesn't keep stacks of the previous screen for it loads the new component on the screen without stacking the previous one 
+
+// popToTop as the name sounds navigates way to the top component first stacked on the navigation scheme

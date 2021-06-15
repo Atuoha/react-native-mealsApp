@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet, Text, Button } from "react-native";
 
-const CategoryMeals = () => {
+const FilterCategoryScreen = () => {
   return (
     <View style={styles.screen}>
-      <Text>CategoryMeals</Text>
+      <Text>FilterCategory</Text>
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoryMeals;
+export default FilterCategoryScreen;

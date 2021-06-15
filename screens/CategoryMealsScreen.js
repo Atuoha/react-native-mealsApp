@@ -1,10 +1,14 @@
 import React from "react";
 import { View, StyleSheet, Text, Button } from "react-native";
 
-const FilterCategory = () => {
+const CategoryMealsScreen = () => {
   return (
     <View style={styles.screen}>
-      <Text>FilterCategory</Text>
+      <Text>CategoryMeals</Text>
+
+      <Button title="Meal Detailed Screen" onPress={()=>{
+        props.navigation.navigate('MealDetail')
+      }} />
     </View>
   );
 };
@@ -17,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FilterCategory;
+export default CategoryMealsScreen;
