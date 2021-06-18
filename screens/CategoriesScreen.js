@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { StyleSheet, FlatList, Button } from "react-native";
 import CategoryGrid from "../components/CategoryGrid";
 
@@ -6,6 +6,11 @@ import { CATEGORIES } from "../data/dummy-data";
 
 const CategoriesScreen = ({route, navigation}) => {
   
+  useEffect(()=>{
+    navigation.setOptions({
+      headerTitle: 'Meals Categories'
+    })
+  })
 
   const renderGridItem = (itemData) => {
     return (
@@ -25,9 +30,7 @@ const CategoriesScreen = ({route, navigation}) => {
  
 };
 
-CategoriesScreen.navigationOptions = {
-  headerTitle: "Meal Categories",
-};
+
 
 const styles = StyleSheet.create({
   screen: {
