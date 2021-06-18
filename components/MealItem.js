@@ -19,7 +19,7 @@ const MealItem = (props) => {
     <View style={styles.mealItem}>
       <RenderComponent style={{ flex: 1 }} onPress={props.onPressFnc}>
         <View>
-          <View style={[styles.mealRow, styles.mealHeader ]}>
+          <View style={[styles.mealRow, styles.mealHeader]}>
             <ImageBackground
               source={{ uri: props.image }}
               style={styles.bgImage}>
@@ -30,7 +30,7 @@ const MealItem = (props) => {
               </View>
             </ImageBackground>
           </View>
-          <View style={[styles.mealRow, styles.mealDetails ]}>
+          <View style={[styles.mealRow, styles.mealDetails]}>
             <Text>{props.duration}m</Text>
             <Text>{props.cost}</Text>
             <Text>{props.type}</Text>
@@ -46,14 +46,14 @@ const styles = StyleSheet.create({
     height: 200,
     flex: 1,
     margin: 5,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: "#f5f5f5",
     borderRadius: 10,
     shadowRadius: 10,
     shadowOpacity: 0.25,
-    shadowOffset: {width: 0, height: 5},
-    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 5 },
+    shadowColor: "black",
     elevation: 3,
-    overflow: 'hidden',
+    overflow: "hidden",
     // alignItems: 'center'
   },
   mealRow: {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   textContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     paddingHorizontal: 12,
     paddingVertical: 5,
   },
@@ -85,8 +85,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     justifyContent: "space-between",
     alignItems: "center",
-    height: '15%',
-    marginTop: 2
+    height: "15%",
+    marginTop: 2,
   },
 });
 

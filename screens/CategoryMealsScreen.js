@@ -4,12 +4,11 @@ import { StyleSheet, FlatList, View } from "react-native";
 import MealItem from "../components/MealItem";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 
-const CategoryMealsScreen = ({route, navigation}) => {
-  const {categoryId} = route.params;
-  const categoryMeals = MEALS.filter((meal) => meal.catIds.indexOf(categoryId) >= 0);
-
-  console.log(categoryMeals)
-  console.log(categoryId)
+const CategoryMealsScreen = ({ route, navigation }) => {
+  const { categoryId } = route.params;
+  const categoryMeals = MEALS.filter(
+    (meal) => meal.catIds.indexOf(categoryId) >= 0
+  );
 
   const renderMealItem = (itemData) => {
     return (
@@ -27,11 +26,7 @@ const CategoryMealsScreen = ({route, navigation}) => {
   };
 
   return (
-    <FlatList
-      data={categoryMeals}
-      renderItem={renderMealItem}
-      numColumns={2}
-    />
+    <FlatList data={categoryMeals} renderItem={renderMealItem} numColumns={2} />
   );
 };
 

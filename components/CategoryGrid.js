@@ -7,6 +7,7 @@ import {
   TouchableNativeFeedback,
   Platform,
 } from "react-native";
+import Color from '../constants/Color'
 
 const CategoryGrid = (props) => {
   let TouchableComponent = TouchableOpacity;
@@ -18,7 +19,7 @@ const CategoryGrid = (props) => {
     <View style={styles.gridItem}>
       <TouchableComponent style={{flex: 1}} onPress={props.onPressFnc}>
         <View
-          style={[styles.container, {backgroundColor: props.color}]}>
+          style={styles.container}>
           <Text style={styles.textStyle} numberOfLines={2}>
             {props.title}
           </Text>
@@ -42,9 +43,9 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 10,
     shadowRadius: 10,
-    shadowColor: "black",
+    shadowColor: Color.primary,
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.26,
+    shadowOpacity: 0.50,
     alignItems: "center",
     justifyContent: "center",
     padding: 15,
