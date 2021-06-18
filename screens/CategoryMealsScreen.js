@@ -1,38 +1,52 @@
 import React from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
-import { CATEGORIES } from "../data/dummy-data";
 
-const CategoryMealsScreen = (props) => {
-  const catId = props.navigation.getParam("categoryId");
-  const selectedCategory = CATEGORIES.find((cat) => cat.id === catId);
-  return (
-    <View style={styles.screen}>
-      <Text>{selectedCategory.title}</Text>
+import { StyleSheet, FlatList, View } from "react-native";
+import MealItem from "../components/MealItem";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
 
-      <Button
-        title="Meal Detailed Screen"
-        onPress={() => {
-          props.navigation.navigate("MealDetail");
+const CategoryMealsScreen = ({route, navigation}) => {
+  const {categoryId} = route.params;
+  const categoryMeals = MEALS.filter((meal) => meal.catIds.indexOf(categoryId) >= 0);
+
+  console.log(categoryMeals)
+  console.log(categoryId)
+
+  const renderMealItem = (itemData) => {
+    return (
+      <MealItem
+        name={itemData.item.name}
+        duration={itemData.item.duration}
+        cost={itemData.item.cost}
+        type={itemData.item.type}
+        image={itemData.item.imageUrl}
+        onPressFnc={() => {
+          navigation.navigate("MealDetail", { mealId: itemData.item.id });
         }}
       />
-    </View>
+    );
+  };
+
+  return (
+    <FlatList
+      data={categoryMeals}
+      renderItem={renderMealItem}
+      numColumns={2}
+    />
   );
 };
 
-CategoriesMealsScreen.navigationOptions = (navigationData) => {
-  const catId = navigationData.navigation.getParam("categoryId");
-  const selectedCategory = CATEGORIES.find((cat) => cat.id === catId);
+// CategoryMealsScreen.navigationOptions = (navigationData) => {
+//   const {categoryId} = route.params;
+//   const selectedCategory = CATEGORIES.find((cat) => cat.id === JSON.Stringify(categoryId));
 
-  return {
-    headerTitle: selectedCategory.title,
-  };
-};
+//   return {
+//     headerTitle: selectedCategory.title,
+//   };
+// };
 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
 

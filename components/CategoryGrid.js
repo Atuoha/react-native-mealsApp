@@ -9,21 +9,21 @@ import {
 } from "react-native";
 
 const CategoryGrid = (props) => {
-  let touchableComponent = TouchableOpacity;
+  let TouchableComponent = TouchableOpacity;
   if (Platform.OS === "android" && Platform.Version >= 21) {
-    touchableComponent = TouchableNativeFeedback;
+    TouchableComponent = TouchableNativeFeedback;
   }
 
   return (
     <View style={styles.gridItem}>
-      <touchableComponent style={{flex: 1}} onPress={props.onPressFnc(props.id)}>
+      <TouchableComponent style={{flex: 1}} onPress={props.onPressFnc}>
         <View
-          style={{ ...styles.container, ...{ backgroundColor: props.color } }}>
+          style={[styles.container, {backgroundColor: props.color}]}>
           <Text style={styles.textStyle} numberOfLines={2}>
             {props.title}
           </Text>
         </View>
-      </touchableComponent>
+      </TouchableComponent>
     </View>
   );
 };
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     margin: 15,
     height: 150,
     borderRadius: 10,
-    overflow: 'hidden'
+    overflow: Platform.OS === "android" && Platform.Version >= 21  ? 'hidden' : 'visible',
+    elevation: 3,
   },
 
   container: {
@@ -44,13 +45,12 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.26,
-    elevation: 3,
     alignItems: "center",
     justifyContent: "center",
     padding: 15,
   },
 
-  textStyles: {
+  textStyle: {
     fontFamily: "open-sans",
     fontWeight: "bold",
     fontSize: 20,
