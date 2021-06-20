@@ -99,7 +99,7 @@ const filterNavigator = () => {
   return (
     <filterStackNavigator.Navigator screenOptions={screenOptions}>
       <filterStackNavigator.Screen
-        name="Favorites 🤍"
+        name="Filter ⚙"
         component={FilterScreen}
       />
     </filterStackNavigator.Navigator>
