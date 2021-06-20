@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Platform } from "react-native";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import Color from "../constants/Color";
 
-const FilterCategoryScreen = () => {
+const FilterCategoryScreen = ({route, navigation}) => {
   useEffect(()=>{
     navigation.setOptions({
       headerLeft: () => (

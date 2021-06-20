@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
+import {Platform } from "react-native";
 import { MEALS } from "../data/dummy-data";
 import MealList from "../components/MealList";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import Color from "../constants/Color";
+
 
 const FavoriteScreen = ({ navigation }) => {
 
