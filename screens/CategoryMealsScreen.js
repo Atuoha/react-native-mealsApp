@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-
-import { StyleSheet, FlatList, View } from "react-native";
-import MealItem from "../components/MealItem";
+import MealList from "../components/MealList";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 
 const CategoryMealsScreen = ({ route, navigation }) => {
@@ -12,38 +10,13 @@ const CategoryMealsScreen = ({ route, navigation }) => {
 
   const selectedCategory = CATEGORIES.find((cat) => cat.id === categoryId);
 
-  useEffect(()=>{
+  useEffect(() => {
     navigation.setOptions({
-      headerTitle: selectedCategory.title
-    })
-  })
+      headerTitle: selectedCategory.title,
+    });
+  });
 
-  const renderMealItem = (itemData) => {
-    return (
-      <MealItem
-        name={itemData.item.name}
-        duration={itemData.item.duration}
-        cost={itemData.item.cost}
-        type={itemData.item.type}
-        image={itemData.item.imageUrl}
-        onPressFnc={() => {
-          navigation.navigate("MealDetail", { mealId: itemData.item.id });
-        }}
-      />
-    );
-  };
-
-  return (
-    <FlatList data={categoryMeals} renderItem={renderMealItem} numColumns={2} />
-  );
+  return <MealList meals={categoryMeals} navigation={navigation} />;
 };
-
-
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-  },
-});
 
 export default CategoryMealsScreen;

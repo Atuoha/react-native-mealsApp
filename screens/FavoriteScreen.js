@@ -1,22 +1,9 @@
 import React from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
+import { MEALS } from "../data/dummy-data";
+import MealList from "../components/MealList";
 
-const FavoriteScreen = ({navigation}) => {
-  return (
-    <View style={styles.screen}>
-      <Text>FavoriteScreen</Text>
-
-      <Button title="move to mealscat" onPress={()=> navigation.navigate('Categories')} />
-    </View>
-  );
+const FavoriteScreen = ({ navigation }) => {
+  return <MealList meals={MEALS} navigation={navigation} />;
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export default FavoriteScreen;

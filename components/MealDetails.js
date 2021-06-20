@@ -1,12 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text, Image, ScrollView } from "react-native";
 import Color from '../constants/Color'
 
 
 const MealDetails = (props) => {
 
   return (
-    <View style={styles.screen}>
+    <ScrollView style={styles.screen}>
        <Text style={styles.title}>{props.name}</Text>
       <View style={styles.row}>
         <View style={[styles.col_6, styles.imgContainer]}>
@@ -16,18 +16,18 @@ const MealDetails = (props) => {
         </View>
 
         <View style={[styles.col_6, styles.textContainer]}>
-          <Text><b>Cost:</b> {props.cost}</Text>
-          <Text><b>Type:</b> {props.type}</Text>
-          <Text><b>Duration:</b> {props.duration}</Text>
-          <Text><b>Ingredients:</b> {props.ingredients}</Text>
-          <Text><b>Steps:</b> {props.steps}</Text>
-          <Text><b>Gluten Free:</b> {props.isGlutenFree === false ? 'No' : 'Yes'}</Text>
-          <Text><b>Vegan:</b> {props.isVegan === false ? 'No' : 'Yes'}</Text>
-          <Text><b>Vegetarian:</b> {props.isVegetarian === false ? 'No' : 'Yes'}</Text>
-          <Text><b>Lactose Free:</b> {props.isLactoseFree === false ? 'No' : 'Yes'}</Text>
+          <Text>Cost: {props.cost}</Text>
+          <Text>Type: {props.type}</Text>
+          <Text>Duration: {props.duration}m</Text>
+          <Text>Ingredients: {props.ingredients}</Text>
+          <Text>Steps: {props.steps}</Text>
+          <Text>Gluten Free: {props.isGlutenFree === false ? 'No' : 'Yes'}</Text>
+          <Text>Vegan: {props.isVegan === false ? 'No' : 'Yes'}</Text>
+          <Text>Vegetarian: {props.isVegetarian === false ? 'No' : 'Yes'}</Text>
+          <Text>Lactose Free: {props.isLactoseFree === false ? 'No' : 'Yes'}</Text>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

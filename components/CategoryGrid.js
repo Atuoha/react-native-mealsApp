@@ -20,7 +20,7 @@ const CategoryGrid = (props) => {
       <TouchableComponent style={{flex: 1}} onPress={props.onPressFnc}>
         <View
           style={styles.container}>
-          <Text style={styles.textStyle} numberOfLines={2}>
+          <Text style={styles.textStyle} numberOfLines={1}>
             {props.title}
           </Text>
         </View>

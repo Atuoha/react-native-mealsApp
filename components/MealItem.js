@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 const MealItem = (props) => {
-  const RenderComponent = TouchableOpacity;
+  let RenderComponent = TouchableOpacity;
   if (Platform.OS === "android" && Platform.Version >= 21) {
     RenderComponent = TouchableNativeFeedback;
   }

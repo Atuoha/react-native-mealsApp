@@ -15,7 +15,7 @@ const MealDetailScreen = ({ route, navigation }) => {
     navigation.setOptions({
       headerTitle: Mealdetails.name,
       headerRight:()=>(
-        <Ionicons name="ios-star-outline" size={25} color={Color.accent} />
+        <Ionicons name="ios-star" size={25} color="white" onPress={()=> alert('hello favs :)')} />
       )
     })
   })
