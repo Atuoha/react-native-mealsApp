@@ -18,7 +18,7 @@ const MealDetails = (props) => {
         <View style={[styles.col_6, styles.textContainer]}>
           <Text>Cost: {props.cost}</Text>
           <Text>Type: {props.type}</Text>
-          <Text>Duration: {props.duration}m</Text>
+          <Text>Duration: {props.duration}</Text>
           <Text>Ingredients: {props.ingredients}</Text>
           <Text>Steps: {props.steps}</Text>
           <Text>Gluten Free: {props.isGlutenFree === false ? 'No' : 'Yes'}</Text>
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   },
 
   title:{
-    fontFamily: 'open-sans',
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center'

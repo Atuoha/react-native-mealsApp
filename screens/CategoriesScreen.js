@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
   },
 
   textStyle: {
-    fontFamily: "open-sans-bold",
     fontWeight: "bold",
   },
 });

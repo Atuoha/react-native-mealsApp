@@ -1,5 +1,5 @@
 import React from "react";
-import { MealsNavigator, MealsTabNavigator } from "./navigation/MealsNavigator";
+import {MainNavigation } from "./navigation/MealsNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 import { useScreens } from "react-native-screens";
 // useScreens();
@@ -7,7 +7,7 @@ import { useScreens } from "react-native-screens";
 export default function App() {
   return (
     <NavigationContainer>
-      <MealsTabNavigator />
+      <MainNavigation />
     </NavigationContainer>
 
   );

@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
   },
 
   textStyle: {
-    fontFamily: "open-sans",
     fontWeight: "bold",
     fontSize: 20,
   },

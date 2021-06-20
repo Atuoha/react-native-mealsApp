@@ -1,14 +1,15 @@
 import React from "react";
-import { Platform } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { Platform, useWindowDimensions } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import CategoryMealsScreen from "../screens/CategoryMealsScreen";
 import CategoriesScreen from "../screens/CategoriesScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
 import Color from "../constants/Color";
 import FavoriteScreen from "../screens/FavoriteScreen";
+import FilterScreen from '../screens/FilterCategoryScreen'
 
 const screenOptions = {
   headerStyle: {
@@ -37,14 +38,20 @@ export const MealsNavigator = () => {
   );
 };
 
-const favStackNavigar = createStackNavigator();
+const favStackNavigator = createStackNavigator();
 
 const FavNavigator = () => {
   return (
-    <favStackNavigar.Navigator screenOptions={screenOptions}>
-      <favStackNavigar.Screen name="Favorites 🤍" component={FavoriteScreen} />
-      <favStackNavigar.Screen name="MealDetail" component={MealDetailScreen} />
-    </favStackNavigar.Navigator>
+    <favStackNavigator.Navigator screenOptions={screenOptions}>
+      <favStackNavigator.Screen
+        name="Favorites 🤍"
+        component={FavoriteScreen}
+      />
+      <favStackNavigator.Screen
+        name="MealDetail"
+        component={MealDetailScreen}
+      />
+    </favStackNavigator.Navigator>
   );
 };
 
@@ -82,5 +89,32 @@ export const MealsTabNavigator = () => {
         }}
       />
     </Tab.Navigator>
+  );
+};
+
+// Filter Screen
+const filterStackNavigator = createStackNavigator();
+
+const filterNavigator = () => {
+  return (
+    <filterStackNavigator.Navigator screenOptions={screenOptions}>
+      <filterStackNavigator.Screen
+        name="Favorites 🤍"
+        component={FilterScreen}
+      />
+    </filterStackNavigator.Navigator>
+  );
+};
+
+// const dimensions = useWindowDimensions();
+
+// Drawer Navigation
+const Drawer = createDrawerNavigator();
+export const MainNavigation = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Meals" component={MealsTabNavigator} />
+      <Drawer.Screen name="Filter" component={filterNavigator} />
+    </Drawer.Navigator>
   );
 };

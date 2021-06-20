@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   mealTitle: {
-    fontFamily: "open-sans",
     fontSize: 20,
     fontWeight: "bold",
     color: "white",
