@@ -1,30 +1,62 @@
 import React from "react";
 import { View, StyleSheet, Text, Image, ScrollView } from "react-native";
-import Color from '../constants/Color'
-
+import Color from "../constants/Color";
 
 const MealDetails = (props) => {
-
   return (
     <ScrollView style={styles.screen}>
-       <Text style={styles.title}>{props.name}</Text>
+      <Text style={styles.title}>{props.name}</Text>
       <View style={styles.row}>
         <View style={[styles.col_6, styles.imgContainer]}>
           <View style={styles.img_style}>
-           <Image source={{ uri: props.imageUrl }} />
+            <Image source={{ uri: props.imageUrl }} style={styles.imageStyle} />
           </View>
         </View>
 
         <View style={[styles.col_6, styles.textContainer]}>
-          <Text>Cost: {props.cost}</Text>
-          <Text>Type: {props.type}</Text>
-          <Text>Duration: {props.duration}</Text>
-          <Text>Ingredients: {props.ingredients}</Text>
-          <Text>Steps: {props.steps}</Text>
-          <Text>Gluten Free: {props.isGlutenFree === false ? 'No' : 'Yes'}</Text>
-          <Text>Vegan: {props.isVegan === false ? 'No' : 'Yes'}</Text>
-          <Text>Vegetarian: {props.isVegetarian === false ? 'No' : 'Yes'}</Text>
-          <Text>Lactose Free: {props.isLactoseFree === false ? 'No' : 'Yes'}</Text>
+          <View style={styles.textRow}>
+            <Text style={{ fontWeight: "bold" }}>{props.cost}</Text>
+            <Text style={{ fontWeight: "bold" }}>{props.type}</Text>
+            <Text style={{ fontWeight: "bold" }}>{props.duration}m</Text>
+          </View>
+
+          <View style={styles.textInnerContainer}>
+            <Text style={[styles.conTitle, { textALign: "center" }]}>
+              Ingredients:
+            </Text>
+            {props.ingredients.map((item) => (
+              <Text style={styles.arrayItemContainer} key={item}>
+                {item}
+              </Text>
+            ))}
+          </View>
+          <View style={styles.textInnerContainer}>
+            <Text style={[styles.conTitle, { textALign: "center" }]}>
+              Steps:
+            </Text>
+            {props.steps.map((item) => (
+              <Text style={styles.arrayItemContainer} key={item}>
+                {item}
+              </Text>
+            ))}
+          </View>
+
+          <View style={styles.freeFromColumn}>
+            <Text style={styles.conTitle}>Gluten Free: </Text>
+            <Text>{props.isGlutenFree === false ? "No" : "Yes"}</Text>
+          </View>
+          <View style={styles.freeFromColumn}>
+            <Text style={styles.conTitle}>Vegan: </Text>
+            <Text>{props.isVegan === false ? "No" : "Yes"}</Text>
+          </View>
+          <View style={styles.freeFromColumn}>
+            <Text style={styles.conTitle}>Vegetarian: </Text>
+            <Text>{props.isVegetarian === false ? "No" : "Yes"}</Text>
+          </View>
+          <View style={styles.freeFromColumn}>
+            <Text style={styles.conTitle}>Lactose Free: </Text>
+            <Text>{props.isLactoseFree === false ? "No" : "Yes"}</Text>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -33,13 +65,47 @@ const MealDetails = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    paddingVertical: 20
+    paddingVertical: 20,
   },
 
-  title:{
+  imageStyle: {
+    width: "100%",
+    height: "100%",
+  },
+
+  title: {
     fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center'
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+
+  textInnerContainer: {
+    marginVertical: 3,
+  },
+
+  textRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    fontSize: 12,
+  },
+
+  freeFromColumn: {
+    flexDirection: "row",
+    // justifyContent: "space-between",
+  },
+
+  arrayItemContainer: {
+    borderRadius: 5,
+    borderColor: "#ccc",
+    padding: 10,
+    borderWidth: 1,
+    marginTop: 5,
+  },
+
+  conTitle: {
+    fontSize: 15,
+    fontWeight: "bold",
   },
 
   row: {
@@ -49,25 +115,24 @@ const styles = StyleSheet.create({
   col_6: {
     margin: 10,
     borderRadius: 5,
-    shadowOffset: {width: 0, height: 5},
-    shadowOpacity: 0.50,
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.5,
     shadowColor: Color.primary,
     shadowRadius: 10,
     elevation: 3,
   },
-  imgContainer:{
-    height:200
-  },
-  img_style:{
-    width: '100%',
-    height: '100%'
-  },
-
-  textContainer:{
+  imgContainer: {
     minHeight: 300,
-    padding: 10
+  },
+  img_style: {
+    width: "100%",
+    height: "100%",
   },
 
+  textContainer: {
+    minHeight: 300,
+    padding: 12,
+  },
 });
 
 export default MealDetails;

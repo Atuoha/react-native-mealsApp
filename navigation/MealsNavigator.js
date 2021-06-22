@@ -9,7 +9,7 @@ import CategoriesScreen from "../screens/CategoriesScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
 import Color from "../constants/Color";
 import FavoriteScreen from "../screens/FavoriteScreen";
-import FilterScreen from '../screens/FilterCategoryScreen'
+import FilterScreen from "../screens/FilterCategoryScreen";
 
 const screenOptions = {
   headerStyle: {
@@ -98,10 +98,7 @@ const filterStackNavigator = createStackNavigator();
 const filterNavigator = () => {
   return (
     <filterStackNavigator.Navigator screenOptions={screenOptions}>
-      <filterStackNavigator.Screen
-        name="Filter ⚙"
-        component={FilterScreen}
-      />
+      <filterStackNavigator.Screen name="Filter ⚙" component={FilterScreen} />
     </filterStackNavigator.Navigator>
   );
 };
@@ -112,8 +109,13 @@ const filterNavigator = () => {
 const Drawer = createDrawerNavigator();
 export const MainNavigation = () => {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Meals" component={MealsTabNavigator} />
+    <Drawer.Navigator
+      contentOptions={{ 
+        activeTintColor: Color.accent,
+        activeBackgroundColor: Color.primary,
+        inactiveTintColor: Color.accent,
+      }}>
+      <Drawer.Screen name="Meals" component={MealsTabNavigator} options={{activeTintColor: Color.accent}} />
       <Drawer.Screen name="Filter" component={filterNavigator} />
     </Drawer.Navigator>
   );
