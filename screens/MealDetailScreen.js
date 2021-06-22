@@ -1,24 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { MEALS } from "../data/dummy-data";
 // import { HeaderButtons, Item } from 'react-navigation-header-button'
 import HeaderButton from "../components/HeaderButton";
 import Color from "../constants/Color";
 import MealDetails from "../components/MealDetails";
 import { Ionicons } from "@expo/vector-icons";
-
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleFavorite} from '../store/actions/meal' 
 
 const MealDetailScreen = ({ route, navigation }) => {
   const { mealId } = route.params;
-  const Mealdetails = MEALS.find((meal) => meal.id === mealId);
+  const { mealTitle } = route.params;
+  const availableMeals = useSelector(state=> state.meals.meals)
+  const Mealdetails = availableMeals.find((meal) => meal.id === mealId);
+
+  const dispatch = useDispatch()
+  const toggleFavoriteHandler = useCallback(()=>{
+    dispatch(toggleFavorite(mealId))
+    console.log('favorite pressed')
+  }, [dispatch, mealId])
 
   useEffect(()=>{
     navigation.setOptions({
-      headerTitle: Mealdetails.name,
+      headerTitle: mealTitle,
       headerRight:()=>(
-        <Ionicons name="ios-star" size={25} color="white" onPress={()=> alert('hello favs :)')} />
+        <Ionicons name="ios-star" size={25} color="white" onPress={toggleFavoriteHandler} />
       )
     })
   })
+
+
+  
 
 
   

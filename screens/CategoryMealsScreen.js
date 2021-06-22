@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import MealList from "../components/MealList";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
+import { useSelector} from 'react-redux'
 
 const CategoryMealsScreen = ({ route, navigation }) => {
   const { categoryId } = route.params;
-  const categoryMeals = MEALS.filter(
+  const availableMeals = useSelector(state => state.meals.filteredMeals)
+  const categoryMeals = availableMeals.filter(
     (meal) => meal.catIds.indexOf(categoryId) >= 0
   );
 

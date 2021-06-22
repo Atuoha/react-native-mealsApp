@@ -12,7 +12,7 @@ const MealList = (props) => {
         type={itemData.item.type}
         image={itemData.item.imageUrl}
         onPressFnc={() => {
-          props.navigation.navigate("MealDetail", { mealId: itemData.item.id });
+          props.navigation.navigate("MealDetail", { mealId: itemData.item.id, mealTitle: itemData.item.name });
         }}
       />
     );

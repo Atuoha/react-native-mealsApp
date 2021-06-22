@@ -21,7 +21,7 @@ const MealDetails = (props) => {
           </View>
 
           <View style={styles.textInnerContainer}>
-            <Text style={[styles.conTitle, { textALign: "center" }]}>
+            <Text style={styles.conTitle}>
               Ingredients:
             </Text>
             {props.ingredients.map((item) => (
@@ -31,7 +31,7 @@ const MealDetails = (props) => {
             ))}
           </View>
           <View style={styles.textInnerContainer}>
-            <Text style={[styles.conTitle, { textALign: "center" }]}>
+            <Text style={styles.conTitle}>
               Steps:
             </Text>
             {props.steps.map((item) => (
@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     minHeight: 300,
+    maxHeight: 300,
   },
   img_style: {
     width: "100%",
