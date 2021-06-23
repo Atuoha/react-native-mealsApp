@@ -1,14 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { View, StyleSheet, Text, Platform } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import Color from "../constants/Color";
 import FilterSwitch from "../components/FilterSwitch";
+import { setFilters } from '../store/actions/meal'
+import { useDispatch } from 'react-redux'
 
 const FilterCategoryScreen = ({ route, navigation }) => {
   const [gluten, setGluten] = useState(false);
   const [lactose, setLactose] = useState(false);
   const [vegan, setVegan] = useState(false);
   const [vegetarian, setVegetarian] = useState(false);
+
+  const filters = {
+    gluten,
+    lactose,
+    vegan,
+    vegetarian
+  }
+
+  const dispatch = useDispatch()
+  const filterMeals = useCallback((filters)=>{
+    dispatch(setFilters(filters))
+  }, [dispatch,filters])
 
   useEffect(() => {
     navigation.setOptions({
@@ -25,7 +39,7 @@ const FilterCategoryScreen = ({ route, navigation }) => {
         name="ios-save"
         size={20}
         color={Platform.OS === "android" || "web" ? "white" : Color.accent}
-        onPress={() => console.log(`Gluten: ${gluten},Vegetarian: ${vegetarian},Lactose: ${lactose},Vegan: ${vegan},`)}
+        onPress={filterMeals(filters)}
       />
       )
     });
@@ -36,7 +50,7 @@ const FilterCategoryScreen = ({ route, navigation }) => {
       <Text style={styles.title}>Available Filters / Restrictions</Text>
 
       <FilterSwitch
-        label="Glueten Free"
+        label="Gluten Free"
         stateValue={gluten}
         onChangeFnc={(newValue) => setGluten(newValue)}
       />

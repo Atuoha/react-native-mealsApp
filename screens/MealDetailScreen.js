@@ -14,6 +14,15 @@ const MealDetailScreen = ({ route, navigation }) => {
   const availableMeals = useSelector(state=> state.meals.meals)
   const Mealdetails = availableMeals.find((meal) => meal.id === mealId);
 
+  const favoriteMeals =  useSelector(state => state.meals.favoriteMeals)
+  const favStatus = favoriteMeals.findIndex(meal => meal.id === mealId)
+  let isFavorite;
+  if(favStatus >= 0){
+    isFavorite = true
+  }else{
+    isFavorite = false;
+  }
+
   const dispatch = useDispatch()
   const toggleFavoriteHandler = useCallback(()=>{
     dispatch(toggleFavorite(mealId))
@@ -24,7 +33,7 @@ const MealDetailScreen = ({ route, navigation }) => {
     navigation.setOptions({
       headerTitle: mealTitle,
       headerRight:()=>(
-        <Ionicons name="ios-star" size={25} color="white" onPress={toggleFavoriteHandler} />
+        <Ionicons name={isFavorite ? "ios-star" : "ios-star-outline"} size={25} color={isFavorite ? "gold" : "white"} onPress={toggleFavoriteHandler} />
       )
     })
   })

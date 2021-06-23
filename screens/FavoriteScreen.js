@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {Platform } from "react-native";
+import {Platform, View, Text, StyleSheet } from "react-native";
 import { MEALS } from "../data/dummy-data";
 import MealList from "../components/MealList";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
@@ -23,7 +23,27 @@ const favoriteMeals = useSelector(state => state.meals.favoriteMeals)
     })
   })
 
-  return <MealList meals={favoriteMeals} navigation={navigation} />;
+
+  if(favoriteMeals.length <=0){
+    return <><View style={styles.screen}><Text style={styles.text}>🔔 No favorites to display!</Text></View></>
+  }else{
+   return <MealList meals={favoriteMeals} navigation={navigation} />;
+  }
+
+ 
 };
+
+const styles = StyleSheet.create({
+  screen:{
+    flex: 1,
+    justifyContent: 'center', 
+    alignItems: 'center',
+  },
+
+  text:{
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
+})
 
 export default FavoriteScreen;
